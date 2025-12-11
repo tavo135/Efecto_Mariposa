@@ -8,7 +8,8 @@ import { RenderPass } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/p
 import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/controls/OrbitControls.js';
 
-// ... el resto de tu código
+// ... el resto de tu 
+
 
 // --- 2. Variables Globales y Setup Inicial --- 
 // ... el resto de tu código
