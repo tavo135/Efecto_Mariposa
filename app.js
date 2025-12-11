@@ -1,10 +1,10 @@
 // --- 1. Imports y Configuración de Módulos ---
-import * as THREE from 'Efecto_Mariposa/node_modules/three/build/three.module.js'; 
-import { GPUComputationRenderer } from 'Efecto_Mariposa/node_modules/three/examples/jsm/misc/GPUComputationRenderer.js';
-import { EffectComposer } from 'Efecto_Mariposa/node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'Efecto_Mariposa/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'Efecto_Mariposa/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OrbitControls } from 'Efecto_Mariposa/node_modules/three/examples/jsm/controls/OrbitControls.js'
+import * as THREE from './node_modules/three/build/three.module.js'; 
+import { GPUComputationRenderer } from './node_modules/three/examples/jsm/misc/GPUComputationRenderer.js';
+import { EffectComposer } from './node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from './node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js'
 // --- 2. Variables Globales y Setup Inicial --- 
 const N = 10000;
 const WIDTH = 100; 
