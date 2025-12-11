@@ -182,7 +182,7 @@ composer.addPass(bloomPass);
 
 function resetInitialConditions() {
      for (let i = 0; i < N; i++) {
-         let j = i *    
+         let j = i * 4;   
          // Posición inicial aleatoria dentro del rango del atractor
          dataArray[j] = 20 * (Math.random() - 0.5);
          dataArray[j + 1] = 20 * (Math.random() - 0.5);
@@ -195,13 +195,13 @@ function resetInitialConditions() {
 onWindowResize();
 
 function animate() {
-     requestAnimationFrame(animate  
+     requestAnimationFrame(animate);  
      // 1. GPGPU: Calcula las nuevas posiciones
      let deltaTime = clock.getDelta();
      const fixedDT = 0.005;
      positionVariable.material.uniforms.deltaTime.value = fixedDT; 
      positionVariable.material.uniforms.time.value += deltaTime;
-     gpuCompute.compute(    
+     gpuCompute.compute();   
      // 2. Visualización: Pasa la nueva textura de posiciones
      particlesMaterial.uniforms.texturePosition.value = gpuCompute.getCurrentRenderTarget(positionVariable).texture;
      const elapsedTime = clock.getElapsedTime();
