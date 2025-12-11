@@ -1,12 +1,15 @@
 // --- 1. Imports y Configuración de Módulos ---
 
 // --- 1. Imports y Configuración de Módulos ---
-import * as THREE from 'https://jspm.dev/three@0.137.0';
-import { GPUComputationRenderer } from 'https://jspm.dev/three@0.137.0/examples/jsm/misc/GPUComputationRenderer.js';
-import { EffectComposer } from 'https://jspm.dev/three@0.137.0/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://jspm.dev/three@0.137.0/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'https://jspm.dev/three@0.137.0/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OrbitControls } from 'https://jspm.dev/three@0.137.0/examples/jsm/controls/OrbitControls.js';
+// USAR JSPM SOLO PARA EL MÓDULO PRINCIPAL (Resuelve el TypeError)
+import * as THREE from 'https://jspm.dev/three@0.137.0'; 
+
+// USAR UNPKG PARA LOS COMPLEMENTOS (Resuelve los errores 404 de ruta)
+import { GPUComputationRenderer } from 'https://unpkg.com/three@0.137.0/examples/jsm/misc/GPUComputationRenderer.js';
+import { EffectComposer } from 'https://unpkg.com/three@0.137.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://unpkg.com/three@0.137.0/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'https://unpkg.com/three@0.137.0/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.137.0/examples/jsm/controls/OrbitControls.js';
 // --- 2. Variables Globales y Setup Inicial --- 
 // ... el resto de tu código
 const N = 10000;
