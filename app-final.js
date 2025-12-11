@@ -2,7 +2,7 @@
 
 // --- 1. Imports y Configuración de Módulos ---
 // USAR JSPM SOLO PARA EL MÓDULO PRINCIPAL (Resuelve el TypeError)
-import * as THREE from 'https://jspm.dev/three@0.137.0'; 
+import * as THREE from 'https://jspm.dev/npm/three@0.137.0'; 
 
 // USAR UNPKG PARA LOS COMPLEMENTOS (Resuelve los errores 404 de ruta)
 import { GPUComputationRenderer } from 'https://unpkg.com/three@0.137.0/examples/jsm/misc/GPUComputationRenderer.js';
