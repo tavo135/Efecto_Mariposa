@@ -1,11 +1,13 @@
 // --- 1. Imports y Configuración de Módulos ---
-import * as THREE from './node_modules/three/build/three.module.js'; 
-import { GPUComputationRenderer } from './node_modules/three/examples/jsm/misc/GPUComputationRenderer.js';
-import { EffectComposer } from './node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from './node_modules/three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from './node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js'
+import * as THREE from 'https://cdn.skypack.dev/three@0.137.0';
+import { GPUComputationRenderer } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/misc/GPUComputationRenderer.js';
+import { EffectComposer } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { OrbitControls } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/controls/OrbitControls.js';
+
 // --- 2. Variables Globales y Setup Inicial --- 
+// ... el resto de tu código
 const N = 10000;
 const WIDTH = 100; 
 const HEIGHT = 100;
