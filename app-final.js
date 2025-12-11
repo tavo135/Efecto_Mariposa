@@ -151,7 +151,7 @@ const particlesMaterial = new THREE.ShaderMaterial({
          WIDTH: { value: WIDTH }, 
          HEIGHT: { value: HEIGHT }, 
          color: { value: new THREE.Color(0xffffff) },
-         rho: { value: 28.0 
+         rho: { value: 28.0} 
      },
      vertexShader: vertexShader,
      fragmentShader: fragmentShaderColor,
