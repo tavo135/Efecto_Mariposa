@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Atractor de Lorenz (GPU)</title>
+     <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+    </style>
+    
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "./node_modules/three/build/three.module.js"
+        }
+    }
+</script>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+    
+<script type="x-shader/x-vertex" id="vertexShader">
+precision highp float; 
+
+
+uniform sampler2D texturePosition;
+
+uniform float WIDTH; 
+uniform float HEIGHT;
+
+attribute float particleID;
+// Variable para pasar la coordenada Z al fragment shader
+varying float vZ;
+
+void main() {
+    float col = mod(particleID, WIDTH);
+    float row = floor(particleID / WIDTH);
+    
+    // Coordenadas UV para la búsqueda de textura
+    vec2 uv = vec2((col + 0.5) / WIDTH, (row + 0.5) / HEIGHT); 
+    
+    vec4 data = texture2D(texturePosition, uv);
+    vec3 newPosition = data.rgb;
+
+    vZ = newPosition.z; 
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+    gl_PointSize = 2.0; 
+}
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShaderPosition">
+precision highp float; 
+
+
+uniform float WIDTH;
+uniform float HEIGHT;
+uniform float deltaTime;
+uniform float sigma;
+uniform float rho;
+uniform float beta;
+
+void main() {
+    // Lectura de la posición anterior
+    // gl_FragCoord.xy es la coordenada de píxel, se normaliza dividiendo por la dimensión de la textura (WIDTH/HEIGHT)
+    vec2 st = gl_FragCoord.xy / vec2(WIDTH, HEIGHT); // <-- CORRECCIÓN: Usar WIDTH/HEIGHT, no 100.0/100.0 (asumiendo que los uniformes WIDTH/HEIGHT están definidos en JS)
+    vec4 tmpPos = texture2D(texturePosition, st);
+    float currentX = tmpPos.r;
+    float currentY = tmpPos.g;
+    float currentZ = tmpPos.b;
+    float currentID = tmpPos.a; // ID guardada pero no usada en el cálculo
+
+    // Ecuaciones de Lorenz (método de Euler)
+    float dt = deltaTime;
+
+    float dXdt = sigma * (currentY - currentX);
+    float dYdt = currentX * (rho - currentZ) - currentY;
+    float dZdt = currentX * currentY - beta * currentZ;
+
+    float newX = currentX + dXdt * dt;
+    float newY = currentY + dYdt * dt;
+    float newZ = currentZ + dZdt * dt;
+
+    gl_FragColor = vec4(newX, newY, newZ, currentID);
+}
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShaderParticleColor">
+
+precision highp float;
+uniform float rho;
+varying float vZ;
+
+void main() {
+    // Rango de Z del Atractor de Lorenz
+    float minZ = -5.0;
+    float maxZ = 50.0;
+    
+    // Normalización y suavizado
+    float f = smoothstep(minZ, maxZ, vZ);
+    float heatFactor = (rho - 20.0) / 20.0;
+    heatFactor = clamp(heatFactor, 0.0, 1.0);
+    
+    // Colores para interpolación: Profundidad a Primer plano
+    vec3 colorCold = vec3(0.1, 0.3, 1.0);  // Azul frío intenso
+    vec3 colorHot  = vec3(1.0, 0.2, 0.1);   // Rojo caliente intenso
+
+    vec3 finalColor = mix(colorCold, colorHot, heatFactor);
+    
+    // Aumento de brillo para el efecto Bloom
+    
+    gl_FragColor = vec4(finalColor * 4.0, 1.0);
+}
+</script>
+<div style="position: absolute; top: 10px; left: 10px; color: white; z-index: 100;">
+        <label for="convection">Fuerza de Convección (ρ): <span id="rhoValue">28.0</span></label>
+        <input type="range" id="convection" min="20" max="40" step="0.1" value="28" style="width: 200px;">
+    </div>
+</body>
+</html>
