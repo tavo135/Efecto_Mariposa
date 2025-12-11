@@ -1,5 +1,6 @@
 // --- 1. Imports y Configuración de Módulos ---
-import * as THREE from 'https://cdn.skypack.dev/three@0.137.0/build/three.module.js';
+
+import * as THREE from 'https://unpkg.com/three@0.137.0/build/three.module.js';
 import { GPUComputationRenderer } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/misc/GPUComputationRenderer.js';
 import { EffectComposer } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/RenderPass.js';
