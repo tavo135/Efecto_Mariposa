@@ -1,14 +1,12 @@
 // --- 1. Imports y Configuración de Módulos ---
 // --- 1. Imports y Configuración de Módulos ---
 // USAR SKYPACK PARA ABSOLUTAMENTE TODO
-import * as THREE from 'https://cdn.skypack.dev/three@0.137.0'; 
-import { GPUComputationRenderer } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/misc/GPUComputationRenderer.js';
-import { EffectComposer } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.137.0/examples/jsm/controls/OrbitControls.js';
-
-// ... el resto de tu 
+import * as THREE from 'https://unpkg.com/three@0.137.0/build/three.module.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.137.0/examples/jsm/controls/OrbitControls.js';
+import { GPUComputationRenderer } from 'https://unpkg.com/three@0.137.0/examples/jsm/misc/GPUComputationRenderer.js';
+import { EffectComposer } from 'https://unpkg.com/three@0.137.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://unpkg.com/three@0.137.0/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'https://unpkg.com/three@0.137.0/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 
 // --- 2. Variables Globales y Setup Inicial --- 
